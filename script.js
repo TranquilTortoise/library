@@ -1,3 +1,5 @@
+const myLibrary = [];
+
 function Book(title, author, qtyPages, haveRead) {
     if (!new.target) {
         throw Error("did not use 'new' operator");
@@ -7,16 +9,14 @@ function Book(title, author, qtyPages, haveRead) {
     this.author = author;
     this.qtyPages = qtyPages;
     this.haveRead = haveRead;
-    this.info = function() {
-        if (!this.haveRead) {
-            return `${this.title} by ${this.author}, ${this.qtyPages}, not yet read`;
-        }
-
-        return `${this.title} by ${this.author}, ${this.qtyPages}, read`;
-    }
 }
 
-const theHobbit = new Book('The Hobbit', 'JRR Tolkien', 295, false);
-const warAndPeace = new Book('War and Peace', 'Tolstoy', 875, true);
-const catInTheHat = new Book('Cat in the Hat','Dr. Seuss', 23, true);
-const noTreason = new Book('No Treason', 'Spooner', 69, false);
+function addBookToLibrary(author, title, qtyPages, haveRead) {
+    let index = myLibrary.length;
+    myLibrary[index] = new Book(author, title, qtyPages, haveRead);
+}
+
+addBookToLibrary('The Hobbit', 'JRR Tolkien', 295, false);
+addBookToLibrary('War and Peace', 'Tolstoy', 875, true);
+addBookToLibrary('Cat in the Hat','Dr. Seuss', 23, true);
+addBookToLibrary('No Treason', 'Spooner', 69, false);
