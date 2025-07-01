@@ -1,0 +1,51 @@
+:root {
+    --dark-brn: rgb(82, 52, 7);
+    --pale-yellow: #FFFFE0;
+    --pale-green: rgb(177, 230, 133);
+}
+
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    line-height: calc(1em + 0.5rem);
+    height: 100vh;
+    background-color: var(--dark-brn);
+}
+
+input, button {
+    font: inherit;
+}
+
+h1 {
+    color: var(--pale-yellow);
+}
+
+.header-container {
+    padding: 2em;
+    display: flex;
+    flex-direction: column;
+    gap: 2em;
+    justify-content: center;
+    align-items: center;
+}
+
+.display-lib-btn {
+    font-weight: bold;
+    border: none;
+    padding: 1em;
+    border-radius: 1em;
+    background-color: var(--pale-yellow);
+    color: var(--dark-brn);
+}
+
+.display-lib-btn:hover {
+    background-color: var(--pale-green);
+    cursor: pointer;
+}
