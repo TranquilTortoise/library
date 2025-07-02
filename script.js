@@ -4,17 +4,18 @@ const displayContainer = document.querySelector('.display-container');
 
 
 // Execution
-addBookToLibrary('The Hobbit', 'JRR Tolkien', 295, false);
-addBookToLibrary('War and Peace', 'Tolstoy', 875, true);
+addBookToLibrary('The Hobbit', 'JRR Tolkien', 295, true);
+addBookToLibrary('War and Peace', 'Tolstoy', 875, false);
 addBookToLibrary('Cat in the Hat','Dr. Seuss', 23, true);
-addBookToLibrary('No Treason', 'Spooner', 69, false);
+addBookToLibrary('No Treason: Constitution of No Authority', 'Spooner', 69, false);
 
     // tie display-lib-btn to displayLibrary function
 const displayLibBtn = document.querySelector('.display-lib-btn');
 displayLibBtn.addEventListener('click', () => {
-    displayContainer.innerHTML = '';
     displayLibrary();
 })
+
+displayLibrary();
 
 
 //Functions
@@ -27,6 +28,10 @@ function Book(title, author, qtyPages, haveRead) {
     this.author = author;
     this.qtyPages = qtyPages;
     this.haveRead = haveRead;
+
+    this.toggleReadStatus = function() {
+        this.haveRead = !this.haveRead;
+    }
 }
 
 function addBookToLibrary(author, title, qtyPages, haveRead) {
@@ -35,6 +40,8 @@ function addBookToLibrary(author, title, qtyPages, haveRead) {
 }
 
 function displayLibrary() {
+
+    displayContainer.innerHTML = '';
     
     for (let i = 0; i < myLibrary.length; i++) {
 
@@ -52,7 +59,7 @@ function displayLibrary() {
         // create author p
         const author = document.createElement('p');
         author.classList.toggle("author");
-        author.textContent = `by,\n${myLibrary[i].author}`;
+        author.textContent = `by ${myLibrary[i].author}`;
         card.appendChild(author);
 
         // create qtyPages p
@@ -60,5 +67,21 @@ function displayLibrary() {
         qtyPages.classList.toggle("qty-pages");
         qtyPages.textContent = `This book has ${myLibrary[i].qtyPages} pages.`;
         card.appendChild(qtyPages);
+
+        // create changeReadState button
+        const changeReadStateBtn = document.createElement('button');
+        changeReadStateBtn.classList.toggle("change-read-status-btn");
+            // use different text based on read status
+        if (myLibrary[i].haveRead === true) {
+            changeReadStateBtn.textContent = 'Mark Unread';
+        } else if (myLibrary[i].haveRead === false) {
+            changeReadStateBtn.textContent = 'Mark Read';
+        }
+            // tie toggleReadStatus function to button
+        changeReadStateBtn.addEventListener('click', () => {
+            myLibrary[i].toggleReadStatus();
+            displayLibrary();
+        })
+        card.appendChild(changeReadStateBtn);
     }
 }

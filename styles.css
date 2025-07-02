@@ -13,6 +13,7 @@
     --pale-green: rgb(177, 230, 133);
     --black: black;
     --dark-green: rgb(50, 133, 50);
+    --pinkish: rgb(231, 210, 213);
 }
 
 *, *::before, *::after {
@@ -34,7 +35,7 @@ input, button {
     font: inherit;
 }
 
-h1 {
+.greeting {
     margin-top: 1em;
     color: var(--pale-yellow);
     font-size: 2.5em;
@@ -75,4 +76,62 @@ h1 {
     background-color: var(--pale-green);
     cursor: pointer;
     color: var(--black);
+}
+
+.display-container {
+    background-color: var(--dark-green);
+    box-shadow: inset 0 0 15px var(--pale-yellow);
+    border-radius: 0.5em;
+    padding: 2em;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 2em;
+}
+
+.card {
+    color: var(--dark-brn);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--pinkish);
+    box-shadow: 0 0 20px 3px var(--dark-brn);
+    border-radius: 0.5em;
+    padding: 1em;
+    width: 40%;
+    height: 14em;
+}
+
+.card:hover {
+    opacity: 0.9;
+}
+
+.title {
+    font-size: 1.5em;
+    text-decoration: underline;
+    text-align: center;
+    line-height: 1.25;
+}
+
+.author,
+.qty-pages {
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.change-read-status-btn {
+    padding: 0.5em;
+    background-color: var(--dark-brn);
+    color: var(--pale-yellow);
+    font-weight: bold;
+    border: solid 3px var(--dark-green);
+    border-radius: 1em;
+    width: 8em;
+}
+
+.change-read-status-btn:hover {
+    cursor: pointer;
+    background-color: var(--dark-green);
+    border: solid 3px var(--dark-brn);
 }
