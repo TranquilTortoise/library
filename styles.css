@@ -9,7 +9,7 @@
     font-family: "hanken";
     letter-spacing: 0.1em;
     --dark-brn: rgb(82, 52, 7);
-    --pale-yellow: #FFFFE0;
+    --pale-yellow: #ebeb6d;
     --pale-green: rgb(177, 230, 133);
     --black: black;
     --dark-green: rgb(50, 133, 50);
@@ -39,6 +39,7 @@ h1 {
     color: var(--pale-yellow);
     font-size: 2.5em;
     text-shadow: -2px -2px 1px var(--dark-green);
+    text-decoration: underline;
 }
 
 .header-container {

@@ -1,5 +1,23 @@
+// Global Constants
 const myLibrary = [];
+const displayContainer = document.querySelector('.display-container');
 
+
+// Execution
+addBookToLibrary('The Hobbit', 'JRR Tolkien', 295, false);
+addBookToLibrary('War and Peace', 'Tolstoy', 875, true);
+addBookToLibrary('Cat in the Hat','Dr. Seuss', 23, true);
+addBookToLibrary('No Treason', 'Spooner', 69, false);
+
+    // tie display-lib-btn to displayLibrary function
+const displayLibBtn = document.querySelector('.display-lib-btn');
+displayLibBtn.addEventListener('click', () => {
+    displayContainer.innerHTML = '';
+    displayLibrary();
+})
+
+
+//Functions
 function Book(title, author, qtyPages, haveRead) {
     if (!new.target) {
         throw Error("did not use 'new' operator");
@@ -16,7 +34,31 @@ function addBookToLibrary(author, title, qtyPages, haveRead) {
     myLibrary[index] = new Book(author, title, qtyPages, haveRead);
 }
 
-addBookToLibrary('The Hobbit', 'JRR Tolkien', 295, false);
-addBookToLibrary('War and Peace', 'Tolstoy', 875, true);
-addBookToLibrary('Cat in the Hat','Dr. Seuss', 23, true);
-addBookToLibrary('No Treason', 'Spooner', 69, false);
+function displayLibrary() {
+    
+    for (let i = 0; i < myLibrary.length; i++) {
+
+        // create card div
+        const card = document.createElement('div');
+        card.classList.toggle("card");
+        displayContainer.appendChild(card);
+
+        // create title h1
+        const title = document.createElement('h1');
+        title.classList.toggle("title");
+        title.textContent = `${myLibrary[i].title}`;
+        card.appendChild(title);
+
+        // create author p
+        const author = document.createElement('p');
+        author.classList.toggle("author");
+        author.textContent = `by,\n${myLibrary[i].author}`;
+        card.appendChild(author);
+
+        // create qtyPages p
+        const qtyPages = document.createElement('p');
+        qtyPages.classList.toggle("qty-pages");
+        qtyPages.textContent = `This book has ${myLibrary[i].qtyPages} pages.`;
+        card.appendChild(qtyPages);
+    }
+}
