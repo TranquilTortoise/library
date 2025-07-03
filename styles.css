@@ -120,7 +120,13 @@ input, button {
     font-size: 1.2em;
 }
 
-.change-read-status-btn {
+.card-btn-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 1em;
+}
+
+.card-btn {
     padding: 0.5em;
     background-color: var(--dark-brn);
     color: var(--pale-yellow);
@@ -130,7 +136,7 @@ input, button {
     width: 8em;
 }
 
-.change-read-status-btn:hover {
+.card-btn:hover {
     cursor: pointer;
     background-color: var(--dark-green);
     border: solid 3px var(--dark-brn);

@@ -9,6 +9,8 @@ addBookToLibrary('The Hobbit', 'JRR Tolkien', 295, true);
 addBookToLibrary('War and Peace', 'Tolstoy', 875, false);
 addBookToLibrary('Cat in the Hat','Dr. Seuss', 23, true);
 addBookToLibrary('No Treason: Constitution of No Authority', 'Spooner', 69, false);
+addBookToLibrary('Narnia', 'C.S. Lewis', 185, true);
+addBookToLibrary('The Godfather', 'Mario Puzo', 450, false);
 
     // tie display-lib-btn to displayLibrary function
 const displayLibBtn = document.querySelector('.display-lib-btn');
@@ -93,9 +95,14 @@ function displayLibrary() {
         qtyPages.textContent = `This book has ${myLibrary[i].qtyPages} pages.`;
         card.appendChild(qtyPages);
 
+        // create card button container
+        const cardBtnContainer = document.createElement('div');
+        cardBtnContainer.classList.toggle("card-btn-container");
+        card.appendChild(cardBtnContainer);
+
         // create changeReadState button
         const changeReadStateBtn = document.createElement('button');
-        changeReadStateBtn.classList.toggle("change-read-status-btn");
+        changeReadStateBtn.classList.toggle("card-btn");
             // use different text based on read status
         if (myLibrary[i].haveRead === true) {
             changeReadStateBtn.textContent = 'Mark Unread';
@@ -107,6 +114,20 @@ function displayLibrary() {
             myLibrary[i].toggleReadStatus();
             displayLibrary();
         })
-        card.appendChild(changeReadStateBtn);
+            // append to card button container
+        cardBtnContainer.appendChild(changeReadStateBtn);
+
+        // create removeBook button
+        const removeBookBtn = document.createElement('button');
+        removeBookBtn.classList.toggle("card-btn");
+        removeBookBtn.textContent = 'Remove Book';
+
+            // remove book at index i when clicked
+        removeBookBtn.addEventListener('click', () => {
+            myLibrary.splice(i, 1);
+            // refresh
+            displayLibrary();
+        })
+        cardBtnContainer.appendChild(removeBookBtn);
     }
 }
