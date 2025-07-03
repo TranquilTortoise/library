@@ -14,10 +14,42 @@
             <button class="display-lib-btn">Display Library</button>
             <button class="new-book-btn">Add Book</button>
         </div>
-        
-        <div class="display-container">
-            
-        </div>
     </div>
+        
+    <div class="display-container">
+        <!-- reserved for script -->    
+    </div>
+
+    <dialog class="dialog">
+        <form>
+            <h2>Add a New Book to Your Library</h2>
+            
+            <div class="form-container">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title">
+            </div>
+
+            <div class="form-container">
+                <label for="author">Author:</label>
+                <input type="text" id="author" name="author">
+            </div>
+
+            <div class="form-container">
+                <label for="qty-pages">No. of Pages:</label>
+                <input type="number" id="qty-pages" name="qty-pages" min="1">
+            </div>
+
+            <div class="form-container">
+                <label for="have-read">Check if you have read it.</label>
+                <input type="checkbox" id="have-read" name="have-read" value="true">
+            </div>
+
+            <div class="form-container">
+                <button value="cancel" formmethod="dialog">Cancel</button>
+                <button value="default" type="submit">Add Book</button>
+            </div>
+
+        </form>
+    </dialog>
 </body>
 </html>

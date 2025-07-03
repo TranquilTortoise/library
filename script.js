@@ -1,6 +1,7 @@
 // Global Constants
 const myLibrary = [];
 const displayContainer = document.querySelector('.display-container');
+const dialog = document.querySelector('.dialog');
 
 
 // Execution
@@ -13,10 +14,33 @@ addBookToLibrary('No Treason: Constitution of No Authority', 'Spooner', 69, fals
 const displayLibBtn = document.querySelector('.display-lib-btn');
 displayLibBtn.addEventListener('click', () => {
     displayLibrary();
-})
+});
 
-displayLibrary();
+    // make new-book-button show modal dialog
+const newBookBtn = document.querySelector('.new-book-btn');
+newBookBtn.addEventListener('click', () => {
+    dialog.showModal();
+});
 
+    // capture dialog form variables to add a new book to library
+const form = document.querySelector('.dialog form');
+form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const title = document.getElementById('title').value;
+    const author = document.getElementById('author').value;
+    const qtyPages = parseInt(document.getElementById('qty-pages').value);
+    const haveRead = document.getElementById('have-read').checked;
+
+    addBookToLibrary(title, author, qtyPages, haveRead);
+
+    form.reset();
+    dialog.close();
+
+    if (displayContainer.classList.contains('show')) {
+        displayLibrary();
+    }
+});
 
 //Functions
 function Book(title, author, qtyPages, haveRead) {
@@ -42,6 +66,7 @@ function addBookToLibrary(author, title, qtyPages, haveRead) {
 function displayLibrary() {
 
     displayContainer.innerHTML = '';
+    displayContainer.classList.add('show');
     
     for (let i = 0; i < myLibrary.length; i++) {
 
